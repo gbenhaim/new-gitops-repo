@@ -13,10 +13,10 @@ def main() -> None:
     rings = list(Path("rings").iterdir())
     for current, prev in pairwise(reversed(rings)):
         if fail_in_ring == prev.name:
-            print(f"!!! Failed to promote from {prev} to {current}")
+            print(f"!!! Failed to promote from {prev.name} to {current.name}")
             continue
         copytree(prev, current, dirs_exist_ok=True)
-        print(f"Promoted {prev} to {current}")
+        print(f"Promoted {prev.name} to {current.name}")
 
 if __name__ == "__main__":
     main()
