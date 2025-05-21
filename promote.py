@@ -11,13 +11,13 @@ def main() -> None:
     rings = list(Path("rings").iterdir())
     for current, prev in pairwise(reversed(rings)):
         if not should_promote_from(prev):
-            print(f"!!! Failed to promote from {prev.name} to {current.name}")
+            print(f"💥 Failed to promote from {prev.name} to {current.name}")
             continue
         copytree(prev, current, dirs_exist_ok=True)
         if changed(current):
-            print(f"Promoted {prev.name} to {current.name}")
+            print(f"🎉 Promoted {prev.name} to {current.name}")
         else:
-            print(f"No new changes promoted to {current.name}")
+            print(f"😾 No new changes promoted to {current.name}")
 
 
 def should_promote_from(ring: Path) -> bool:
