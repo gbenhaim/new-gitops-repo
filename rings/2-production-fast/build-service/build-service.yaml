@@ -10,4 +10,4 @@ metadata:
   name: build-service
 data:
   component: build-service
-  change: "2"
+  change: "3"
