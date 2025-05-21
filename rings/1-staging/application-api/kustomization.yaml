@@ -1,3 +1,3 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 resources:
-- https://github.com/konflux-ci/application-api/config/crd?ref=e7eb2ecfb4090e53cffbfcd9308ff40ff4b6772e
+- application-api.yaml

@@ -4,9 +4,12 @@ resources:
   - ../../../rings/2-production-fast/build-service
 
 patches:
-  - path: pipelines-as-code-secret-patch.yaml
+  - patch: |-
+      - op: add
+        path: /data/cluster
+        value: kflux-prod-rh01
     target:
-      name: pipelines-as-code-secret
-      kind: ExternalSecret
-      group: external-secrets.io
-      version: v1beta1
+      name: build-service
+      kind: ConfigMap
+      group: ""
+      version: v1
