@@ -19,10 +19,18 @@ spec:
     metadata:
       name: '{{.path.basename}}-{{index .path.segments 1}}'
     spec:
-      project: "my-project"
+      project: default
       source:
         repoURL: https://github.com/gbenhaim/new-gitops-repo.git
         targetRevision: main
         path: '{{.path.path}}'
       destination:
         server: https://kubernetes.default.svc
+      syncPolicy:
+        automated: 
+          prune: true
+          selfHeal: true
+        retry:
+          limit: 50
+          backoff:
+            duration: 15s
