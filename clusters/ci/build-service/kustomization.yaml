@@ -3,10 +3,4 @@ kind: Kustomization
 resources:
   - ../../../rings/0-development/build-service
 
-patches:
-  - path: pipelines-as-code-secret-patch.yaml
-    target:
-      name: pipelines-as-code-secret
-      kind: ExternalSecret
-      group: external-secrets.io
-      version: v1beta1
+namespace: ci-build-service

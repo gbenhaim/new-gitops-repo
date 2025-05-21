@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: all-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/gbenhaim/new-gitops-repo.git
+      revision: main
+      directories:
+      - path: clusters/ci/*
+      - path: clusters/kflux-stg-rh01/*
+      - path: clusters/kflux-prod-rh01/*
+      - path: clusters/kflux-prod-rh02/*
+  template:
+    metadata:
+      name: '{{.path.basename}}-{{index .path.segments 1}}'
+    spec:
+      project: "my-project"
+      source:
+        repoURL: https://github.com/gbenhaim/new-gitops-repo.git
+        targetRevision: main
+        path: '{{.path.path}}'
+      destination:
+        server: https://kubernetes.default.svc

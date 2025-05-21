@@ -1,3 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:

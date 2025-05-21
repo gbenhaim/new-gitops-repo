@@ -13,3 +13,5 @@ patches:
       kind: ConfigMap
       group: ""
       version: v1
+
+namespace: kflux-prod-rh01-build-service
